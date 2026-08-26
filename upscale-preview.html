@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>장미단 퍼스나콘 AI 업스케일 비교</title>
+    <style>
+      :root {
+        color-scheme: dark;
+        font-family: Pretendard, "Noto Sans KR", system-ui, sans-serif;
+        background: #0c090b;
+        color: #fff7f9;
+      }
+      * { box-sizing: border-box; }
+      body { margin: 0; padding: 32px; background: radial-gradient(circle at top, #35131f 0, #120b0e 42%, #080708 100%); }
+      main { width: min(1160px, 100%); margin: 0 auto; }
+      h1 { margin: 0 0 8px; font-size: clamp(24px, 3vw, 38px); font-weight: 700; }
+      .intro { margin: 0 0 28px; color: #e9c9d2; line-height: 1.6; }
+      .legend, .row { display: grid; grid-template-columns: 90px repeat(3, minmax(0, 1fr)); gap: 12px; align-items: center; }
+      .legend { position: sticky; top: 0; z-index: 2; padding: 12px; border: 1px solid #f19ab1; border-radius: 14px; background: rgba(45, 18, 28, .94); backdrop-filter: blur(12px); }
+      .legend div { text-align: center; color: #ffdce6; font-weight: 650; }
+      .row { margin-top: 12px; padding: 12px; border: 1px solid rgba(241, 154, 177, .38); border-radius: 14px; background: rgba(64, 24, 39, .6); }
+      .month { text-align: center; color: #f7c7d4; font-size: 18px; font-weight: 650; }
+      figure { margin: 0; min-height: 178px; display: grid; place-items: center; border-radius: 12px; background-color: #080808; background-image: linear-gradient(45deg, #181818 25%, transparent 25%), linear-gradient(-45deg, #181818 25%, transparent 25%), linear-gradient(45deg, transparent 75%, #181818 75%), linear-gradient(-45deg, transparent 75%, #181818 75%); background-size: 24px 24px; background-position: 0 0, 0 12px, 12px -12px, -12px 0; }
+      img { width: 144px; height: 144px; object-fit: contain; image-rendering: auto; }
+      @media (max-width: 720px) {
+        body { padding: 14px; }
+        .legend, .row { grid-template-columns: 60px repeat(3, minmax(0, 1fr)); gap: 6px; padding: 8px; }
+        .legend div { font-size: 12px; }
+        .month { font-size: 14px; }
+        figure { min-height: 100px; }
+        img { width: min(92px, 100%); height: auto; aspect-ratio: 1; }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>장미단 퍼스나콘 AI 업스케일 비교</h1>
+      <p class="intro">원본은 36×36, 두 AI 결과는 144×144입니다. Waifu2x는 부드럽고 원본의 명암을 많이 남기며, Real-ESRGAN은 선이 더 또렷하지만 일부 형태를 단순화할 수 있습니다.</p>
+      <section class="legend" aria-label="비교 항목">
+        <div>기간</div><div>원본 36px 확대</div><div>Waifu2x 4배</div><div>Real-ESRGAN 4배</div>
+      </section>
+      <section id="gallery" aria-label="퍼스나콘 비교 갤러리"></section>
+    </main>
+    <script>
+      const months = ['01','02','03','06','10','12','18','24','30','36','42','48','54','60','66','72','78','84','90','96','102','108','114','120'];
+      const gallery = document.querySelector('#gallery');
+      for (const month of months) {
+        const row = document.createElement('article');
+        row.className = 'row';
+        row.innerHTML = `
+          <div class="month">${Number(month)}개월</div>
+          <figure><img src="assets/personacons/${month}-month.png" alt="${Number(month)}개월 원본" /></figure>
+          <figure><img src="assets/personacons-upscaled/waifu2x/${month}-month.png" alt="${Number(month)}개월 Waifu2x" /></figure>
+          <figure><img src="assets/personacons-upscaled/realesrgan/${month}-month.png" alt="${Number(month)}개월 Real-ESRGAN" /></figure>`;
+        gallery.appendChild(row);
+      }
+    </script>
+  </body>
+</html>
