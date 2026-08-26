@@ -7,6 +7,7 @@ export const zoomThreshold = 5;
 export const STUCK_DELAY = 5000;
 export const winnerAreaHeight = 168;
 export const HAIR_BORDER = '#afcbde';
+export const HAIR_NEON_BLUE = '#99b2cc';
 export const HAIR_BORDER_COLORS = [
   'rgba(175, 203, 222, .96)',
   'rgba(117, 139, 167, .92)',
@@ -21,15 +22,15 @@ export enum Skills {
 }
 
 export const DefaultEntityColor = {
-  box: 'cyan',
+  box: HAIR_NEON_BLUE,
   circle: 'yellow',
   polyline: 'white',
 } as const;
 
 export const DefaultBloomColor = {
-  box: 'cyan',
+  box: HAIR_NEON_BLUE,
   circle: 'yellow',
-  polyline: 'cyan',
+  polyline: HAIR_NEON_BLUE,
 };
 
 export const Themes: Record<string, ColorTheme> = {
@@ -43,7 +44,7 @@ export const Themes: Record<string, ColorTheme> = {
       box: {
         fill: '#226f92',
         outline: 'black',
-        bloom: 'cyan',
+        bloom: HAIR_NEON_BLUE,
         bloomRadius: 0,
       },
       circle: {
@@ -55,7 +56,7 @@ export const Themes: Record<string, ColorTheme> = {
       polyline: {
         fill: 'white',
         outline: 'black',
-        bloom: 'cyan',
+        bloom: HAIR_NEON_BLUE,
         bloomRadius: 0,
       },
     },
@@ -75,9 +76,9 @@ export const Themes: Record<string, ColorTheme> = {
     coolTimeIndicator: 'red',
     entity: {
       box: {
-        fill: 'cyan',
-        outline: 'cyan',
-        bloom: 'cyan',
+        fill: HAIR_NEON_BLUE,
+        outline: HAIR_NEON_BLUE,
+        bloom: HAIR_NEON_BLUE,
         bloomRadius: 15,
       },
       circle: {
@@ -89,7 +90,7 @@ export const Themes: Record<string, ColorTheme> = {
       polyline: {
         fill: 'white',
         outline: 'white',
-        bloom: 'cyan',
+        bloom: HAIR_NEON_BLUE,
         bloomRadius: 15,
       },
     },
