@@ -1,4 +1,4 @@
-// 푸른 은발은 반투명 패널과 네온에, 금빛 머리끝은 조작 버튼에 사용한다.
+// 견자희 이미지의 푸른 은발에서 금빛 머리끝으로 이어지는 색을 반투명 UI에 사용한다.
 :root {
   --ui-font: 'Pretendard Variable', Pretendard, 'Noto Sans KR', 'Malgun Gothic', 'Apple SD Gothic Neo', system-ui, sans-serif;
   --hair-primary: #99b2cc;
@@ -9,10 +9,9 @@
   --hair-ink: #1c2236;
   --hair-gold: #edc886;
   --hair-gold-light: #ffe0a0;
-  --hair-panel-gradient: linear-gradient(to bottom, rgba(117, 139, 167, .3) 0%, rgba(46, 52, 83, .17) 100%);
-  --hair-settings-gradient: linear-gradient(to bottom, rgba(117, 139, 167, .22) 0%, rgba(46, 52, 83, .1) 100%);
-  --hair-border-gradient: linear-gradient(to bottom, rgba(175, 203, 222, .92) 0%, rgba(117, 139, 167, .82) 100%);
-  --hair-button-gradient: linear-gradient(to bottom, rgba(255, 224, 160, .94) 0%, rgba(237, 200, 134, .88) 100%);
+  --hair-panel-gradient: linear-gradient(to bottom, rgba(46, 52, 83, .46) 0%, rgba(117, 139, 167, .4) 43%, rgba(213, 180, 125, .34) 76%, rgba(237, 200, 134, .28) 100%);
+  --hair-settings-gradient: linear-gradient(to bottom, rgba(46, 52, 83, .34) 0%, rgba(117, 139, 167, .28) 43%, rgba(213, 180, 125, .22) 76%, rgba(237, 200, 134, .18) 100%);
+  --hair-border-gradient: linear-gradient(to bottom, rgba(175, 203, 222, .96) 0%, rgba(117, 139, 167, .92) 42%, rgba(237, 200, 134, .92) 76%, rgba(255, 224, 160, .94) 100%);
 }
 
 * {
@@ -94,7 +93,7 @@ canvas {
   border-radius: 12px;
   padding: 10px;
   color: var(--hair-cream);
-  box-shadow: 0 10px 32px rgba(26, 32, 54, .48), 0 0 28px rgba(153, 178, 204, .15), inset 0 1px 0 rgba(255, 255, 255, .18);
+  box-shadow: 0 10px 32px rgba(26, 32, 54, .54), 12px 14px 30px rgba(237, 200, 134, .12), inset 0 1px 0 rgba(255, 255, 255, .22);
   z-index: 999;
   width: clamp(640px, 44vw, 760px);
   min-width: 640px;
@@ -142,7 +141,7 @@ canvas {
       border: 2px solid transparent;
       border-radius: 12px;
       background: var(--hair-settings-gradient) padding-box, var(--hair-border-gradient) border-box;
-      box-shadow: 0 8px 24px rgba(26, 32, 54, .46), 0 0 24px rgba(153, 178, 204, .14);
+      box-shadow: 0 8px 24px rgba(26, 32, 54, .5), 10px 10px 24px rgba(237, 200, 134, .12);
 
       .speed-group {
         width: 258px;
@@ -165,9 +164,9 @@ canvas {
   }
 
   button, .btn {
-    color: var(--hair-ink);
-    background: var(--hair-button-gradient);
-    border: 1px solid rgba(255, 224, 160, .92);
+    color: var(--hair-cream);
+    background: rgba(46, 52, 83, .88);
+    border: 1px solid rgba(210, 225, 237, .7);
     border-radius: 7px;
     padding: 5px 10px;
     font-weight: 600;
@@ -312,10 +311,10 @@ canvas {
       height: 25px;
       width: 33%;
       border-radius: 0;
-      background: rgba(237, 200, 134, .72);
-      border: 1px solid rgba(255, 224, 160, .72);
+      background: rgba(118, 138, 151, .68);
+      border: 1px solid rgba(210, 225, 237, .6);
       padding: 0;
-      color: var(--hair-ink);
+      color: var(--hair-cream);
       font-weight: 600;
 
       display: flex;
@@ -342,7 +341,7 @@ canvas {
       }
 
       &.active {
-        background: var(--hair-gold-light);
+        background: var(--hair-cream);
         color: var(--hair-ink);
       }
     }
@@ -372,7 +371,7 @@ canvas {
   border: 2px solid transparent;
   border-radius: 12px;
   background: var(--hair-panel-gradient) padding-box, var(--hair-border-gradient) border-box;
-  box-shadow: 0 0 26px rgba(153, 178, 204, .24), 0 12px 30px rgba(26, 32, 54, .45), inset 0 1px 0 rgba(255, 255, 255, .18);
+  box-shadow: -8px -6px 22px rgba(117, 139, 167, .34), 10px 12px 24px rgba(237, 200, 134, .22), inset 0 1px 0 rgba(255, 255, 255, .22);
   color: var(--hair-cream);
 
   &.hidden {
@@ -420,10 +419,10 @@ canvas {
       height: 38px;
       margin-left: 8px;
       padding: 0 20px;
-      border: 1px solid var(--hair-gold-light);
+      border: 1px solid var(--hair-soft);
       border-radius: 6px;
-      background: var(--hair-button-gradient);
-      color: var(--hair-ink);
+      background: rgba(46, 52, 83, .9);
+      color: var(--hair-cream);
       font-size: 16px;
       font-weight: 600;
       cursor: pointer;
@@ -461,16 +460,16 @@ canvas {
       min-width: 88px;
       height: 30px;
       padding: 0 14px;
-      border: 1px solid var(--hair-gold-light);
+      border: 1px solid var(--hair-soft);
       border-radius: 6px;
-      background: var(--hair-button-gradient);
-      color: var(--hair-ink);
+      background: rgba(46, 52, 83, .9);
+      color: var(--hair-cream);
       font-size: 14px;
       font-weight: 600;
       cursor: pointer;
 
       &:last-child {
-        background: rgba(237, 200, 134, .68);
+        background: rgba(184, 201, 226, .22);
       }
 
       &:disabled {
