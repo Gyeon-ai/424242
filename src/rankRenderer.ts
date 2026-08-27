@@ -89,8 +89,8 @@ export class RankRenderer implements UIObject {
       const y = rank * this.fontHeight;
       if (y >= startY && y <= startY + ctx.canvas.height) {
         ctx.fillStyle = `hsl(${marble.hue} 100% ${theme.marbleLightness}`;
-        ctx.strokeText(`${rank === winnerRank ? '☆' : '\u2714'} ${marble.name} #${rank + 1}`, startX, 20 + y);
-        ctx.fillText(`${rank === winnerRank ? '☆' : '\u2714'} ${marble.name} #${rank + 1}`, startX, 20 + y);
+        ctx.strokeText(`${rank === winnerRank ? '👑' : '\u2714'} ${marble.name} #${rank + 1}`, startX, 20 + y);
+        ctx.fillText(`${rank === winnerRank ? '👑' : '\u2714'} ${marble.name} #${rank + 1}`, startX, 20 + y);
       }
     });
     ctx.font = `500 10pt ${UI_FONT_FAMILY}`;
