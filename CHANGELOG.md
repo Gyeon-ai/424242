@@ -1,5 +1,12 @@
 # Changelog
 
+- 2026-09-19:
+    - Clarified the upstream, third-party, and project asset license notices.
+    - Retired the offline cache so deployed updates are loaded normally.
+    - Smoothed horizontal camera movement and improved minimap antialiasing.
+    - Fixed fast-forward hit testing and time-scale-aware stuck detection.
+    - Improved winner personacon rendering and application icons.
+    - Removed unused advertisement and keyword code.
 - 2025-11-13:
     - Optimized the rendering process.
 - 2025-11-10:

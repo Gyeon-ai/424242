@@ -97,8 +97,8 @@ export const Themes: Record<string, ColorTheme> = {
     rankStroke: '',
     minimapBackground: '#333333',
     minimapViewport: HAIR_BORDER,
-    winnerBackground: 'rgba(0, 0, 0, 0.5)',
-    winnerOutline: 'black',
+    winnerBackground: 'rgba(0, 0, 0, 0.72)',
+    winnerOutline: '',
     winnerText: 'white',
   },
 };
