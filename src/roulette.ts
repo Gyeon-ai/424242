@@ -10,9 +10,8 @@ import options from './options';
 import { ParticleManager } from './particleManager';
 import { Box2dPhysics } from './physics-box2d';
 import { RankRenderer } from './rankRenderer';
-import { type AdHit, RouletteRenderer } from './rouletteRenderer';
+import { RouletteRenderer } from './rouletteRenderer';
 import { SkillEffect } from './skillEffect';
-import type { RoundAd } from './types/Ad.type';
 import type { ColorTheme } from './types/ColorTheme';
 import type { MouseEventHandlerName, MouseEventName } from './types/mouseEvents.type';
 import type { UIObject } from './UIObject';
@@ -87,7 +86,6 @@ export class Roulette extends EventTarget {
     }
     if (obj.onMessage) {
       obj.onMessage((msg) => {
-        console.log('onMessage', msg);
         this.dispatchEvent(new CustomEvent('message', { detail: msg }));
       });
     }
@@ -104,11 +102,11 @@ export class Roulette extends EventTarget {
     }
     this._lastTime = currentTime;
 
-    const interval = (this._updateInterval / 1000) * this._timeScale;
-
     while (this._elapsed >= this._updateInterval) {
+      const timeScale = this._timeScale;
+      const interval = (this._updateInterval / 1000) * timeScale;
       this.physics.step(interval);
-      this._updateMarbles(this._updateInterval);
+      this._updateMarbles(this._updateInterval, timeScale);
       this._particleManager.update(this._updateInterval);
       this._updateEffects(this._updateInterval);
       this._elapsed -= this._updateInterval;
@@ -132,14 +130,14 @@ export class Roulette extends EventTarget {
     window.requestAnimationFrame(this._update);
   }
 
-  private _updateMarbles(deltaTime: number) {
+  private _updateMarbles(deltaTime: number, timeScale: number) {
     if (!this._stage) return;
 
     const removalIds: number[] = [];
 
     for (let i = 0; i < this._marbles.length; i++) {
       const marble = this._marbles[i];
-      marble.update(deltaTime);
+      marble.update(deltaTime, timeScale);
       if (marble.skill === Skills.Impact) {
         this._effects.push(new SkillEffect(marble.x, marble.y));
         this.physics.impact(marble.id);
@@ -166,7 +164,8 @@ export class Roulette extends EventTarget {
     this._goalDist = Math.abs(this._stage.zoomY - topY);
     this._timeScale = this._calcTimeScale();
 
-    this._marbles = this._marbles.filter((marble) => marble.y <= this._stage?.goalY);
+    const goalY = this._stage.goalY;
+    this._marbles = this._marbles.filter((marble) => marble.y <= goalY);
   }
 
   private _finishRound(winner: Marble) {
@@ -283,19 +282,6 @@ export class Roulette extends EventTarget {
       e.preventDefault();
     });
 
-    canvas.addEventListener('click', (e) => {
-      const hit = this.adHitAt(e);
-      if (!hit) return;
-      if (hit.type === 'close') {
-        this.hideAdOverlay();
-      } else {
-        window.open(hit.url, '_blank', 'noopener');
-      }
-    });
-
-    canvas.addEventListener('pointermove', (e) => {
-      canvas.style.cursor = this.adHitAt(e) ? 'pointer' : '';
-    });
   }
 
   private _loadMap() {
@@ -331,27 +317,6 @@ export class Roulette extends EventTarget {
       throw new Error('Speed multiplier must larger than 0');
     }
     this._speed = value;
-  }
-
-  public setAd(ad: RoundAd | null) {
-    this._renderer.setAd(ad);
-  }
-
-  public preloadAdImages(srcs: (string | undefined)[]) {
-    this._renderer.preloadAdImages(srcs);
-  }
-
-  public showAdOverlay(mode: 'preroll' | 'result') {
-    this._renderer.showAdOverlay(mode);
-  }
-
-  public hideAdOverlay() {
-    this._renderer.hideAdOverlay();
-  }
-
-  private adHitAt(e: MouseEvent): AdHit | null {
-    const sizeFactor = this._renderer.sizeFactor;
-    return this._renderer.getAdHitAt(e.offsetX * sizeFactor, e.offsetY * sizeFactor);
   }
 
   public setTheme(themeName: keyof typeof Themes) {

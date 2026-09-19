@@ -1,9 +1,9 @@
 import './localization';
 import options from './options';
-import { registerServiceWorker } from './registerServiceWorker';
+import { retireServiceWorker } from './retireServiceWorker';
 import { Roulette } from './roulette';
 
-registerServiceWorker();
+retireServiceWorker();
 
 const roulette = new Roulette();
 

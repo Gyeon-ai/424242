@@ -6,25 +6,13 @@
 
   <title>자희 핀볼</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="apple-touch-icon" sizes="57x57" href="assets/apple-icon-57x57.png?v=gyeonjahee-rose">
-  <link rel="apple-touch-icon" sizes="60x60" href="assets/apple-icon-60x60.png?v=gyeonjahee-rose">
-  <link rel="apple-touch-icon" sizes="72x72" href="assets/apple-icon-72x72.png?v=gyeonjahee-rose">
-  <link rel="apple-touch-icon" sizes="76x76" href="assets/apple-icon-76x76.png?v=gyeonjahee-rose">
-  <link rel="apple-touch-icon" sizes="114x114" href="assets/apple-icon-114x114.png?v=gyeonjahee-rose">
-  <link rel="apple-touch-icon" sizes="120x120" href="assets/apple-icon-120x120.png?v=gyeonjahee-rose">
-  <link rel="apple-touch-icon" sizes="144x144" href="assets/apple-icon-144x144.png?v=gyeonjahee-rose">
-  <link rel="apple-touch-icon" sizes="152x152" href="assets/apple-icon-152x152.png?v=gyeonjahee-rose">
-  <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-icon-180x180.png?v=gyeonjahee-rose">
-  <link rel="icon" type="image/png" href="assets/personacons/01-month.png?v=gyeonjahee-rose">
-  <link rel="icon" type="image/png" sizes="192x192" href="assets/android-icon-192x192.png?v=gyeonjahee-rose">
-  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png?v=gyeonjahee-rose">
-  <link rel="icon" type="image/png" sizes="96x96" href="assets/favicon-96x96.png?v=gyeonjahee-rose">
-  <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png?v=gyeonjahee-rose">
-  <link rel="manifest" href="assets/manifest.json?v=gyeonjahee-rose">
+  <link rel="apple-touch-icon" href="assets/jahi-pinball-icon-192.png?v=jahi-v2">
+  <link rel="icon" type="image/png" href="assets/jahi-pinball-icon-192.png?v=jahi-v2">
+  <link rel="manifest" href="assets/manifest.json?v=jahi-v2">
 
-  <meta name="msapplication-TileColor" content="#2e3453">
-  <meta name="msapplication-TileImage" content="assets/ms-icon-144x144.png">
-  <meta name="theme-color" content="#2e3453">
+  <meta name="msapplication-TileColor" content="#000000">
+  <meta name="msapplication-TileImage" content="assets/jahi-pinball-icon-192.png">
+  <meta name="theme-color" content="#000000">
 
   <meta name="description" content="구슬을 굴려 당첨자를 뽑는 자희 핀볼 추첨기">
   <meta property="og:title" content="자희 핀볼">
@@ -218,11 +206,9 @@
 
   function initialize() {
     if (!window.roulette || !window.roulette.isReady) {
-      console.log('does not loaded yet');
       setTimeout(initialize, 100);
       return;
     }
-    console.log('initializing start');
 
     const urlParams = new URLSearchParams(window.location.search);
     const namesFromUrl = urlParams.get('names');
@@ -346,25 +332,12 @@
       window.roulette.setMap(index);
     });
 
-    // const checkDonateButtonLoaded = () => {
-    //   const btn = document.querySelector('span.bmc-btn-text');
-    //   if (!btn) {
-    //     setTimeout(checkDonateButtonLoaded, 100);
-    //   } else {
-    //     console.log('donation button has been loaded');
-    //     btn.setAttribute('data-trans', '');
-    //     window.translateElement(btn);
-    //   }
-    // };
-    // setTimeout(checkDonateButtonLoaded, 100);
-
     function simpleToast(msg) {
       const toast = document.createElement('div');
       toast.classList.add('toast');
       toast.innerHTML = msg;
 
       if (window.translateElement) {
-        console.log('try to translate');
         window.translateElement(toast);
       }
 
