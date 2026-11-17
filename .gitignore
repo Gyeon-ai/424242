@@ -11,3 +11,10 @@ src/preview.ts
 custom.html
 preview.html
 scripts/build-custom.sh
+
+# 스트리머 그림 원본은 저장소에 올리지 않는다(암호화된 .png.enc만 올림, scripts/decrypt-personacons.mjs)
+assets/personacons-final/**/*.png
+
+# 2026-11-17: 빌드에 쓰지 않는 퍼스나콘 사본(추출 원본·업스케일 비교본). 원본은 묶음 _백업에 있다.
+assets/personacons/
+assets/personacons-upscaled/
