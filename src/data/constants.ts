@@ -14,6 +14,16 @@ export const HAIR_BORDER_COLORS = [
   'rgba(255, 224, 160, .94)',
 ] as const;
 export const UI_FONT_FAMILY = `'Pretendard Variable', Pretendard, 'Noto Sans KR', 'Malgun Gothic', 'Apple SD Gothic Neo', system-ui, sans-serif`;
+// 오락실 도트 테마의 캔버스용 색과 글꼴(패널 쪽 값은 assets/style.scss의 :root)
+export const DOT_LINE = '#7fb0c8';
+export const DOT_INK = '#0f1a24';
+export const DOT_TEXT_SOFT = '#cfe6f0';
+export const DOT_ACCENT = '#f2cf6b';
+export const DOT_RED = '#d98a3a';
+export const NAME_FONT_FAMILY = `'Noto Sans KR', sans-serif`;
+export const DOT_FONT_FAMILY = `'Galmuri11', 'Noto Sans KR', sans-serif`;
+export const NUMBER_FONT_FAMILY = `'Press Start 2P', 'Galmuri11', monospace`;
+export const WINNER_NAME_FONT_FAMILY = `'Do Hyeon', 'Noto Sans KR', sans-serif`;
 
 export enum Skills {
   None,
@@ -84,7 +94,7 @@ export const Themes: Record<string, ColorTheme> = {
     rankStroke: '',
     minimapBackground: '#333333',
     minimapViewport: HAIR_BORDER,
-    winnerBackground: 'rgba(0, 0, 0, 0.72)',
+    winnerBackground: 'rgba(15, 26, 36, 0.9)',
     winnerOutline: '',
     winnerText: 'white',
   },
