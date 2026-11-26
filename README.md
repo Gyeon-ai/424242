@@ -16,23 +16,6 @@
 
 기본 참가자는 `견자희,장미단,핀볼`입니다.
 
-## 실행과 빌드
-
-Node.js 24와 pnpm 11.19.0을 권장합니다.
-
-```powershell
-pnpm install
-pnpm dev
-```
-
-개발 서버는 기본적으로 `http://localhost:1235`에서 열립니다. 정적 배포 파일은 다음 명령으로 `dist` 폴더에 생성합니다.
-
-```powershell
-pnpm build
-```
-
-오프라인 실행은 지원하지 않습니다. 과거 버전의 서비스 워커가 남은 브라우저에서는 배포된 제거 스크립트가 자희 핀볼 캐시만 정리한 뒤 등록을 해제합니다.
-
 ## 수집기 연결
 
 Windows 수집기의 `PinballUrl`에 `https://gyeon-ai.github.io/424242/`를 설정하면 기존 `?names=` 명단 전달 기능을 사용할 수 있습니다.
